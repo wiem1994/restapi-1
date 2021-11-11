@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block title %}Comments{% endblock %}
+{% block body %}
+
+
+<table width="50%" border="1" cellspacing="1" cellpadding="7">
+ 
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+      <th>body</th>
+</tr>
+  {% for comment in comments %}
+  <tr>
+    <td>{{ comment.name }}</td>
+    <td>{{ comment.email }}</td>
+     <td>{{ comment.body }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %} 
