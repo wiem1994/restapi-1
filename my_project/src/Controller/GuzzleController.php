@@ -15,7 +15,7 @@ class GuzzleController extends AbstractController
 
     /**
 
-     * @Route("/get_posts", name="get_posts")
+     * @Route("/articles", name="get_posts")
 
      */
 
@@ -29,13 +29,13 @@ class GuzzleController extends AbstractController
 
             // Base URI is used with relative requests
 
-            'base_uri' => 'https://jsonplaceholder.typicode.com/',
+            'base_uri' => 'http://127.0.0.1:8000',
 
         ]);
 
 
 
-        $response = $client->request('GET', '/posts');
+        $response = $client->request('GET', '/articles-new');
 
 
         //get status code using $response->getStatusCode();
@@ -44,18 +44,18 @@ class GuzzleController extends AbstractController
 
         $body = $response->getBody();
 
-        $arr_body = json_decode($body);
+        $arrBody = json_decode($body);
 
         return $this->render('Posts/posts.html.twig', [
 
-            'posts' => $arr_body,
+            'posts' => $arrBody,
 
         ]);
     }
 
     /**
 
-     * @Route("/post_posts", name="post_posts")
+     * @Route("/post-articles", name="post_posts")
 
      */
 
@@ -65,29 +65,30 @@ class GuzzleController extends AbstractController
 
         $client = new Client([
             // Base URI is used with relative requests
-            'base_uri' => 'https://jsonplaceholder.typicode.com/',
+            'base_uri' => 'http://127.0.0.1:8000',
         ]);
 
-        $response = $client->request('POST', '/posts', [
+        $response = $client->request('POST', '/articles', [
             'json' => [
-                'title' => 'test',
-                'body' => 'this is the body of test',
-                'userId' => '1',
+                'titre' => 'test',
+                'contenu' => 'this is the body of test',
+                'auteur' => '1',
+                'datepublication' => '1',
             ]
         ]);
 
         //get status code using $response->getStatusCode();
 
         $body = $response->getBody();
-        $arr_body = json_decode($body);
+        $arrBody = json_decode($body);
         return $this->render('Posts/show.html.twig', [
 
-            'post' => $arr_body,
+            'post' => $arrBody,
 
         ]);
     }
 
-    /**
+/**
 
      * @Route("/modify_post", name="modify_post")
 
@@ -112,10 +113,10 @@ class GuzzleController extends AbstractController
         //get status code using $response->getStatusCode();
 
         $body = $response->getBody();
-        $arr_body = json_decode($body);
+        $arrBody = json_decode($body);
         return $this->render('Posts/show.html.twig', [
 
-            'post' => $arr_body,
+            'post' => $arrBody,
 
         ]);
     }
@@ -169,11 +170,11 @@ class GuzzleController extends AbstractController
 
         $body = $response->getBody();
 
-        $arr_body = json_decode($body);
+        $arrBody = json_decode($body);
 
         return $this->render('Posts/comments.html.twig', [
 
-            'comments' => $arr_body,
+            'comments' => $arrBody,
 
         ]);
     }

@@ -6,13 +6,15 @@
 <table width="50%" border="1" cellspacing="1" cellpadding="7">
  
 <tr>
-    <th>Title</th>
-    <th>Content</th>
+    <th>Titre</th>
+    <th>Contenu</th>
+     <th>Auteur</th>   
 </tr>
   {% for element in posts %}
   <tr>
-    <td>{{ element.title }}</td>
-    <td>{{ element.body }}</td>
+    <td>{{ element.titre }}</td>
+    <td>{{ element.contenu }}</td>
+     <td>{{ element.auteur }}</td>
   </tr>
   {% endfor %}
 </table>
